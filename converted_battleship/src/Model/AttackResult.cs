@@ -68,7 +68,7 @@ public class AttackResult
 		_Text = text;
 		_Ship = null;
 		_Row = row;
-		_column= column;
+		_Column= column;
 	}
 
 	/// <summary>
