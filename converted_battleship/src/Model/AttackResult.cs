@@ -64,11 +64,12 @@ public class AttackResult
 	/// <param name="value">either hit, miss, destroyed, shotalready</param>
 	public AttackResult(ResultOfAttack value, string text, int row, int column)
 	{
+		_column= column
 		_Value = value;
 		_Text = text;
 		_Ship = null;
 		_Row = row;
-		_Column = column;
+	
 	}
 
 	/// <summary>
