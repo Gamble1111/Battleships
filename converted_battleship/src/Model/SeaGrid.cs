@@ -190,7 +190,7 @@ public class SeaGrid : ISeaGrid
 			}
 
 			//else hit but not destroyed
-			return new AttackResult(ResultOfAttack.Hit, "hit something!", row, col);
+			return new AttackResult(ResultOfAttack.Hit, "hit the enemy's", row, col);
 		} finally {
 			if (Changed != null) {
 				Changed(this, EventArgs.Empty);
