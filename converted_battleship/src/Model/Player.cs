@@ -179,7 +179,8 @@ public class Player : IEnumerable<Ship>
 	/// <returns>the result of the attack</returns>
 	internal AttackResult Shoot(int row, int col)
 	{
-		_shots += 1;
+		if(!_playerGrid._GameTiles[row, col].Shot) 
+			_shots += 1;
 		AttackResult result = default(AttackResult);
 		result = EnemyGrid.HitTile(row, col);
 
