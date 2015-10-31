@@ -127,7 +127,10 @@ public static class GameController
 		DrawScreen();
 		SwinGame.RefreshScreen();
 	}
-
+	
+	/// <summary>
+	/// Plays audio file and draws animation for when an enemy ship has been hit.
+	/// </summary>
 	private static void PlayHitSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation) {
@@ -139,6 +142,9 @@ public static class GameController
 		DrawAnimationSequence();
 	}
 
+	/// <summary>
+	/// Plays audio file and draws animation for when an enemy ship has been missed.
+	/// </summary>
 	private static void PlayMissSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation) {
