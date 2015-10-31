@@ -257,18 +257,26 @@ static class UtilityFunctions
 
 		SwinGame.DrawFramerate(675, 585, GameFont("CourierSmall"));
 	}
-
+	
+	/// <summary>
+	/// Registers the explosion animation to a row + col
+	/// </summary>
 	public static void AddExplosion(int row, int col)
 	{
 		AddAnimation(row, col, "Splash");
 	}
 
+	/// <summary>
+	/// Registers the Splash animation to a row + col
+	/// </summary>
 	public static void AddSplash(int row, int col)
 	{
 		AddAnimation(row, col, "Splash");
 	}
 
-
+	/// <summary>
+	/// Positions an Animation within set bounds
+	/// </summary>
 	private static List<Sprite> _Animations = new List<Sprite>();
 	private static void AddAnimation(int row, int col, string image)
 	{
@@ -289,6 +297,9 @@ static class UtilityFunctions
 		_Animations.Add(s);
 	}
 
+	/// <summary>
+	///	Updates the Animation
+	/// </summary>
 	public static void UpdateAnimations()
 	{
 		List<Sprite> ended = new List<Sprite>();
@@ -305,6 +316,9 @@ static class UtilityFunctions
 		}
 	}
 
+	/// <summary>
+	/// Draws the Animation
+	/// </summary>
 	public static void DrawAnimations()
 	{
 		foreach (Sprite s in _Animations) {
