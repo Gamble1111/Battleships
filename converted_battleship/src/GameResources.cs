@@ -14,7 +14,9 @@ using static HighScoreController;
 
 public static class GameResources
 {
-
+	/// <summary>
+	/// Loads fonts from resources
+	/// </summary>
 	private static void LoadFonts()
 	{
 		NewFont("ArialLarge", "arial.ttf", 80);
@@ -23,6 +25,9 @@ public static class GameResources
 		NewFont("Menu", "ffaccess.ttf", 8);
 	}
 
+	/// <summary>
+	/// Loads images from resources
+	/// </summary>
 	private static void LoadImages()
 	{
 		//Backgrounds
@@ -50,6 +55,9 @@ public static class GameResources
 
 	}
 
+	/// <summary>
+	/// Loads sounds from resources
+	/// </summary>
 	private static void LoadSounds()
 	{
 		NewSound("Error", "error.wav");
@@ -61,6 +69,9 @@ public static class GameResources
 		NewSound("Lose", "lose.wav");
 	}
 
+	/// <summary>
+	/// Loads music from resources
+	/// </summary>
 	private static void LoadMusic()
 	{
 		NewMusic("Background", "horrordrone.mp3");
