@@ -105,6 +105,9 @@ public class Player : IEnumerable<Ship>
 		get { return _shots; }
 	}
 
+	/// <summary>
+	/// The number of hits the player has made
+	/// </summary>
 	public int Hits {
 		get { return _hits; }
 	}
@@ -118,6 +121,9 @@ public class Player : IEnumerable<Ship>
 		get { return _misses; }
 	}
 
+	/// <summary>
+	/// Calculates the score using small mathematical algorythm
+	/// </summary>
 	public int Score {
 		get {
 			if (IsDestroyed) {
@@ -197,6 +203,9 @@ public class Player : IEnumerable<Ship>
 		return result;
 	}
 
+	/// <summary>
+	/// Randomly selects a position on the grid for ships to be deployed
+	/// </summary>
 	public virtual void RandomizeDeployment()
 	{
 		bool placementSuccessful = false;
