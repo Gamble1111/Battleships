@@ -13,7 +13,30 @@ using SwinGameSDK;
 /// </summary>
 public abstract class AIPlayer : Player
 {
+	/// <summary>
+	/// Shoot at a given row/column
+	/// </summary>
+	/// <param name="row">the row to attack</param>
+	/// <param name="col">the column to attack</param>
+	/// <returns>the result of the attack</returns>
+	internal override AttackResult Shoot(int row, int col)
+	{
+		_shots += 1;
+		AttackResult result = default(AttackResult);
+		result = EnemyGrid.HitTileAI(row, col);
 
+		switch (result.Value) {
+			case ResultOfAttack.Destroyed:
+			case ResultOfAttack.Hit:
+				_hits += 1;
+				break;
+			case ResultOfAttack.Miss:
+				_misses += 1;
+				break;
+		}
+
+		return result;
+	}
 	/// <summary>
 	/// Location can store the location of the last hit made by an
 	/// AI Player. The use of which determines the difficulty.

@@ -18,10 +18,10 @@ public class Player : IEnumerable<Ship>
 	private ISeaGrid _enemyGrid;
 
 	protected BattleShipsGame _game;
-	private int _shots;
-	private int _hits;
+	protected int _shots;
+	protected int _hits;
 
-	private int _misses;
+	protected int _misses;
 	/// <summary>
 	/// Returns the game that the player is part of.
 	/// </summary>

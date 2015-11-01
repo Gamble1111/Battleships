@@ -85,6 +85,17 @@ public class SeaGridAdapter : ISeaGrid
 	{
 		return _MyGrid.HitTile(row, col);
 	}
+
+		/// <summary>
+	/// HitTile calls oppon _MyGrid to hit a tile at the row, col
+	/// </summary>
+	/// <param name="row">the row its hitting at</param>
+	/// <param name="col">the column its hitting at</param>
+	/// <returns>The result from hitting that tile</returns>
+	public AttackResult HitTileAI(int row, int col)
+	{
+		return _MyGrid.HitTileAI(row, col);
+	}
 	#endregion
 
 }
