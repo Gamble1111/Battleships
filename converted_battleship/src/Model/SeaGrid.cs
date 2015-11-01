@@ -186,26 +186,49 @@ public class SeaGrid : ISeaGrid
 			if (_GameTiles[row, col].Ship.IsDestroyed) {
 				_GameTiles[row, col].Shot = true;
 				_ShipsKilled += 1;
-				return new AttackResult(ResultOfAttack.Destroyed, _GameTiles[row, col].Ship, "destroyed the players", row, col);
+				return new AttackResult(ResultOfAttack.Destroyed, _GameTiles[row, col].Ship, "destroyed the enemy's", row, col);
 			}
 
 			//else hit but not destroyed
-			return new AttackResult(ResultOfAttack.Hit, "hit the players", row, col);
+			return new AttackResult(ResultOfAttack.Hit, "hit the enemy", row, col);
 		} finally {
 			if (Changed != null) {
 				Changed(this, EventArgs.Empty);
 			}
 		}
 	}
-	/// <summary>
-	/// Mark the indicated tile as shot.
-	/// </summary>
-	/// <param name="row">the row of the tile</param>
-	/// <param name="col">the column of the tile</param>
-	/// <returns>the result of the attack</returns>
-	AttackResult HitTileAI(int row, int col);
+	public AttackResult HitTileAI(int row, int col)
+	{
+		try {
+			//tile is already hit
+			if (_GameTiles[row, col].Shot) {
+				return new AttackResult(ResultOfAttack.ShotAlready, "have already attacked [" + col + "," + row + "]!", row, col);
+			}
 
+			_GameTiles[row, col].Shoot();
+
+			//there is no ship on the tile
+			if (_GameTiles[row, col].Ship == null) {
+				return new AttackResult(ResultOfAttack.Miss, "missed", row, col);
+			}
+
+			//all ship's tiles have been destroyed
+			if (_GameTiles[row, col].Ship.IsDestroyed) {
+				_GameTiles[row, col].Shot = true;
+				_ShipsKilled += 1;
+				return new AttackResult(ResultOfAttack.Destroyed, _GameTiles[row, col].Ship, "destroyed the player's", row, col);
+			}
+
+			//else hit but not destroyed
+			return new AttackResult(ResultOfAttack.Hit, _GameTiles[row, col].Ship, "hit the player's", row, col);
+		} finally {
+			if (Changed != null) {
+				Changed(this, EventArgs.Empty);
+			}
+		}
+	}
 }
+
 
 //=======================================================
 //Service provided by Telerik (www.telerik.com)
