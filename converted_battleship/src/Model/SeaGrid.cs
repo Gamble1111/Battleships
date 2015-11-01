@@ -167,7 +167,7 @@ public class SeaGrid : ISeaGrid
 	/// <param name="row">the row at which is being shot</param>
 	/// <param name="col">the cloumn at which is being shot</param>
 	/// <returns>An attackresult (hit, miss, sunk, shotalready)</returns>
-	public AttackResult HitTile(int row, int col, Ship ships)
+	public AttackResult HitTile(int row, int col)
 	{
 		try {
 			//tile is already hit
@@ -186,11 +186,11 @@ public class SeaGrid : ISeaGrid
 			if (_GameTiles[row, col].Ship.IsDestroyed) {
 				_GameTiles[row, col].Shot = true;
 				_ShipsKilled += 1;
-				return new AttackResult(ResultOfAttack.Destroyed, _GameTiles[row, col].Ship, "destroyed the" + ships.name, row, col);
+				return new AttackResult(ResultOfAttack.Destroyed, _GameTiles[row, col].Ship, "destroyed the players", row, col);
 			}
 
 			//else hit but not destroyed
-			return new AttackResult(ResultOfAttack.Hit, "hit the" + ships.name, row, col);
+			return new AttackResult(ResultOfAttack.Hit, "hit the players", row, col);
 		} finally {
 			if (Changed != null) {
 				Changed(this, EventArgs.Empty);
